@@ -1,0 +1,35 @@
+{% extends 'html/base.html' %}
+{% block title %}Role Request{% endblock %}
+{% block content %}
+<div class="container" style="margin-top: 100px;">
+    {% if c == 0 %}
+    <div class="card col-md-6 mx-auto shadow-lg" style="background: linear-gradient(90deg, rgba(236,207,127,1) 35%, rgba(236,237,5,1) 100%);">
+        <div class="card-body">
+            <h3>Request Form</h3>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for n in d %}
+                {% if forloop.counter == 1 %}
+                <input type="text" name="uname" class="form-control my-2" value="{{request.user.username}}" readonly>
+                {% elif forloop.counter >= 2 %}
+                <div>{{n}}</div>
+                {% endif %}
+                {% endfor %}
+                <div class="row">
+                    <div class="col">
+                        <a href="{% url 'home' %}" class="btn btn-outline-secondary form-control my-2">Back To Home</a>
+                    </div>
+                    <div class="col">
+                        <input type="submit" value="Request" class="btn btn-outline-success form-control my-2">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    {% else %}
+    <div class="jumbotron" style="background: linear-gradient(90deg, rgba(236,207,127,1) 35%, rgba(236,237,5,1) 100%);">
+        <h3>Please Wait For Admin to Authenticate</h3>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

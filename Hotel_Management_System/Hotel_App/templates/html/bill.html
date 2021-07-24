@@ -1,0 +1,136 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <script type = "text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script> -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+    <link rel="icon" href="{% static 'img/logo6.png' %}" type="image/x-icon">
+    <title>Bill</title>
+    <style>
+        body{
+            overflow-x: hidden;
+        }
+        .invoice-title{
+            background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(9,17,121,1) 40%, rgba(0,215,255,1) 100%);
+        }
+        /* .invoice-title h2, .invoice-title h3 {
+        display: inline-block;
+        } */
+
+        .table > tbody > tr > .no-line {
+        border-top: none;
+        }
+
+        .table > thead > tr > .no-line {
+        border-bottom: none;
+        }
+
+        .table > tbody > tr > .thick-line {
+        border-top: 2px solid;
+        }
+    </style>
+    <script type="text/javascript">  
+        function PrintDiv() 
+       {  
+           var divContents = document.getElementById("printdivcontent").innerHTML;  
+           var printWindow = window.open('', '', 'height=1000,width=1000');  
+           printWindow.document.write('<html><head><title>Print DIV Content</title>');  
+           printWindow.document.write('</head><body >');  
+           printWindow.document.write(divContents);  
+           printWindow.document.write('</body></html>');  
+           printWindow.document.close();  
+           printWindow.print();  
+        }  
+    </script> 
+</head>
+<body>
+<div class="container" id="printdivcontent" style="margin-top: 30px;">
+    <div class="row" >
+        <div class="col-xs-12" >
+    		<div class="invoice-title">
+    			<img src="{% static 'img/logo6.png' %}" alt="Logo" height="50" width="50"><h3 class="pull-right">Invoice</h3>
+    		</div>
+    		<div class="row">
+    			<div class="col-xs-6">
+    				<address>
+    				<strong>Billed To:</strong><br>
+    					{{y.first_name}} {{y.last_name}}<br>
+    					
+    				</address>
+    			</div>
+    			<div class="col-xs-6 text-right">
+    				<address>
+    					<strong>Bill Date:</strong><br>
+    					{{t.co_date}}<br><br>
+    				</address>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+    
+    <div class="row" style="margin-top: 100px;">
+    	<div class="col-md-12">
+    		<div class="panel panel-default">
+    			<div class="panel-heading">
+    				<h3 class="panel-title"><strong>Order summary</strong></h3>
+    			</div>
+    			<div class="panel-body">
+    				<div class="table-responsive">
+    					<table class="table table-condensed">
+    						<thead>
+                                <tr>
+        							<td><strong>Room No</strong></td>
+        							<td class="text-center"><strong>Price (per day)</strong></td>
+        							<td class="text-center"><strong>No of days</strong></td>
+        							<td class="text-right"><strong>Totals</strong></td>
+                                </tr>
+    						</thead>
+    						<tbody>
+    							<tr>
+    								<td>{{x.rno}}</td>
+    								<td class="text-center">₹ {{x.rcost}}</td>
+    								<td class="text-center">{{z}}</td>
+    								<td class="text-right">₹ {{v}}</td>
+    							</tr>
+                                
+    							<tr>
+    								<td class="thick-line"></td>
+    								<td class="thick-line"></td>
+    								<td class="thick-line text-center"><strong>Subtotal</strong></td>
+    								<td class="thick-line text-right">₹ {{v}}</td>
+    							</tr>
+    							<tr>
+    								<td class="no-line"></td>
+    								<td class="no-line"></td>
+    								<td class="no-line text-center"><strong>Tax (18%)</strong></td>
+    								<td class="no-line text-right">₹ {{u}}</td>
+    							</tr>
+    							<tr>
+    								<td class="no-line"></td>
+    								<td class="no-line"></td>
+    								<td class="no-line text-center"><strong>Total</strong></td>
+    								<td class="no-line text-right">₹ {{j}}</td>
+    							</tr>
+    						</tbody>
+    					</table>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+    
+</div>
+<div class="row" style="margin-left: 725px;">
+    <button style="color: white; background-color: rgba(0,215,255,1); font-size: 25px;" onclick="PrintDiv()" >Download</button>
+</div>
+</body>
+</html>

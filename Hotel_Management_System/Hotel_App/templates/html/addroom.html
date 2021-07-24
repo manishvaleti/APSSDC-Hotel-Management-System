@@ -1,0 +1,62 @@
+{% extends 'html/base.html' %}
+{% block title %}Add Room{% endblock %}
+{% block content %}
+<div class="container-fluid" style="margin-top: 100px;">
+    {% if messages %}
+    {% for m in messages %}
+    <div class="alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{m}}
+    </div>
+    {% endfor %}
+    {% endif %}
+    <div class="row">
+        <div class="card col-md-4 shawdow-lg mx-2 h-100" style="background: linear-gradient(90deg, rgba(236,207,127,1) 35%, rgba(236,237,5,1) 100%);">
+            <div class="card-body ">
+                <form action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                
+                <h3 class="text-center text-success bg-dark p-2 border rounded">Add Room</h3>
+                {% for j in a %}
+                <div>
+                    {{j}}
+                </div>
+                {% endfor %}
+                <div class="row">
+                    <div class="col">
+                        <input type="reset" name="Reset" class="form-control btn btn-outline-info my-2 ">
+                    </div>
+                    <div class="col">
+                        <input type="submit" name="submit" class="form-control btn btn-outline-success my-2 ">
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+        <div class="card col-md shawdow-lg mx-2 " style="background: linear-gradient(90deg, rgba(236,207,127,1) 35%, rgba(236,237,5,1) 100%);">
+            <div class="card-body">
+                <h3 class="text-center text-white bg-danger p-2 border rounded">List of Rooms</h3>
+                <table class="table table-borderless table-hover">
+                    <tr class="bg-dark text-light">
+                        <th>S.No</th>
+                        <th>Room Number</th>
+                        <th>Room Description</th>
+                        <th>Room Price</th>
+                        <th>Actions</th>
+                    </tr>
+                    {% for k in x %}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td><a href="{% url 'vr' k.id %}">{{k.rno}}</a></td>
+                        <td>{{k.rdes}}</td>
+                        <td>{{k.rcost}}</td>
+                        <td><a href="{% url 'ur' k.id %}" class="btn btn-outline-info mx-2">Update</a><a href="{% url 'dr' k.id %}" class="btn btn-outline-danger mx-2">Delete</a></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

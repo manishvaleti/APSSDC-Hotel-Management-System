@@ -1,0 +1,43 @@
+{% extends 'html/base.html' %}
+{% load static %}
+{% block title %}About Us{% endblock %}
+{% block content %}
+<style>
+    .btn:hover{
+        background-color: rgb(24, 144, 250);
+        color: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);;
+    }
+</style>
+<div class="container-fluid" style="margin-top: 75px;">
+    <div class="row">
+        <div class="row">
+            <img src="{% static 'img/Images/aboutus.jpg' %}" alt="" width="1550" height="200">
+        </div>
+        <div class="card row mt-5" style="margin-right: 100px; margin-left: 100px;" style="background: linear-gradient(90deg, rgba(236,207,127,1) 35%, rgba(236,237,5,1) 100%);">
+            <div class="card-body">
+                <p>R Hotels is an international hotel chain headquartered in the United States. A division of the R Hotel Group, it operates the brands R Blu, R Red, R Collection, Country Inn & Suites, and Park Inn by R among others.</p>
+
+                <p>The majority of R-branded hotels are located in the United States. The company's headquarters, as well as the headquarters of the owner, R Hospitality, Inc., are located in Minnetonka, Minnesota, a suburb of Minneapolis, the city where the first R Hotel was built. The original R Hotel, opened in 1909, was at 41 South Seventh Street in Minneapolis.</p>
+            </div>
+        </div>
+    </div>
+    <div class="card row my-5" style="margin-right: 100px; margin-left: 100px;" style="background: linear-gradient(90deg, rgba(236,207,127,1) 35%, rgba(236,237,5,1) 100%);">
+        <div class="card-body">
+            <h3 class="text-center">OUR BRANCHES</h3>
+            <br>
+            <ul type="none" style="display: flex;">
+                <li><span class="btn btn-outline-secondary mx-4">Hyderabad</span></li>
+                <li><span class="btn btn-outline-secondary mx-4">Mumbai</span></li>
+                <li><span class="btn btn-outline-secondary mx-4">Bangalore</span></li>
+                <li><span class="btn btn-outline-secondary mx-4">Vizag</span></li>
+                <li><span class="btn btn-outline-secondary mx-4">Kolkata</span></li>
+                <li><span class="btn btn-outline-secondary mx-4">Pune</span></li>
+                <li><span class="btn btn-outline-secondary mx-4">Chennai</span></li>
+                <li><span class="btn btn-outline-secondary mx-4">Delhi</span></li>
+                <li><span class="btn btn-outline-secondary mx-4">Ahmedabad</span></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% include 'html/footer.html' %}
+{% endblock %}

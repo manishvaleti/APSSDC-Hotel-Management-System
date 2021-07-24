@@ -1,0 +1,25 @@
+{% extends 'html/base.html' %}
+{% block title %}User Registration{% endblock %}
+{% block content %}
+<div class="container" style="margin-top: 100px;">
+    <div style="background: linear-gradient(90deg, rgba(236,207,127,1) 35%, rgba(236,237,5,1) 100%);" class="card col-md-5 mx-auto shawdow-lg">
+        <div class="card-body">
+            <h3 style="color: aliceblue;">User Registration</h3>
+            <form  method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for i in t %}
+                <div style="color: blue;">{{i}}</div>
+                {% endfor %}
+                <div class="row">
+                    <div class="col">
+                        <input type="reset" value="Reset" class="btn btn-outline-danger my-2">
+                    </div>
+                    <div class="col">
+                        <input type="submit" value="Create User" class="btn btn-outline-success my-2" >
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

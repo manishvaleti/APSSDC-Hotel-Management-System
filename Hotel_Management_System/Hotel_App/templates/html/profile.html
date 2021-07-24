@@ -1,0 +1,52 @@
+{% extends 'html/base.html' %}
+{% block title %}Profile{% endblock %}
+{% block content %}
+<div class="container" style="margin-top: 100px;">
+    
+    <div class="row mt-4">
+        <div  class="card col-md-4 shadow-lg mx-2" style="background: linear-gradient(90deg, rgba(236,207,127,1) 35%, rgba(236,237,5,1) 100%);">
+            <div class="card-body">
+                <h3>Profile Page</h3>
+                <img src="{{d.uimg.url}}" alt="pic" height="250" width="250">
+            </div>
+            
+        </div>
+        <div  class="card col-md shadow-lg mx-2" style="background: linear-gradient(90deg, rgba(236,207,127,1) 35%, rgba(236,237,5,1) 100%);">
+            <div class="card-body">
+                <h3>User Details</h3>
+                <table table table-borderless>
+                    <tr>
+                        <th class="mx-2">Name</th>
+                        <td>{{d.first_name}} {{d.last_name}}</td>
+                    </tr>
+                    <tr>
+                        <th class="mx-2">Email </th>
+                        <td>{{d.email}}</td>
+                    </tr>
+                    <tr>
+                        <th class="mx-2">Mobile </th>
+                        <td> &nbsp{{d.mobilenumber}}</td>
+                    </tr>
+                </table>
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="row my-5">
+                        
+                            <a href="{% url 'home' %}" class="btn btn-outline-secondary my-2 mx-2">BACK</a>
+                    
+                        {% if user.role == 3 %}
+                        
+                            <a href="{% url 'hist' d.id %}" class="btn btn-outline-info my-2 mx-2">BOOKING HISTORY</a>
+                        
+                        {% endif %}
+                        
+                            <a href="{% url 'pfud' %}" class="btn btn-outline-success my-2 mx-2">EDIT</a>
+                        
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

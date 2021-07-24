@@ -1,0 +1,39 @@
+{% extends 'html/base.html' %}
+{% block title %}View Room{% endblock %}
+{% block content %}
+<div class="container" style="margin-top:100px;">
+    <div class="row mt-4">
+        <div class="card col-md-4 mx-auto shawdow-lg" style="background: linear-gradient(90deg, rgba(236,207,127,1) 35%, rgba(236,237,5,1) 100%);">
+            <h3>Room Pic</h3>
+            <img src="{{x.rimg.url}}" alt="Room Pic" height="320" width="350">
+        </div>
+        <div class="card col-md-4 mx-auto shawdow-lg" style="background: linear-gradient(90deg, rgba(236,207,127,1) 35%, rgba(236,237,5,1) 100%);">
+            <table class="table" >
+                <tr>
+                    <th>Room Number</th>
+                    <td>{{x.rno}}</td>
+                </tr>
+                <tr>
+                    <th>Room Description</th>
+                    <td>{{x.rdes}}</td>
+                </tr>
+                <tr>
+                    <th>Room Price</th>
+                    <td>{{x.rcost}}/per night</td>
+                </tr>
+                
+            </table>
+            {% if user.role == 2 %}
+            <div class="row">
+                <a href="{% url 'ar' %}" class="btn btn-outline-info my-2 mx-auto">Back</a>
+            </div>
+            {% else %}
+            <div class="row">
+                <a href="{% url 'avr' %}" class="btn btn-outline-info my-2 mx-auto">Back</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

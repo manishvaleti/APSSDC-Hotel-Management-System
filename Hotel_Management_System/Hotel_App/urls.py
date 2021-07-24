@@ -1,0 +1,30 @@
+from django.urls import path
+from . import views
+from django.contrib.auth import views as v
+urlpatterns = [
+    path('',views.home,name="home"),
+    path('register/',views.usrreg,name="reg"),
+    path('login/',v.LoginView.as_view(template_name="html/login.html"),name="lg"),
+    path('logout/',v.LogoutView.as_view(template_name="html/logout.html"),name="lgo"),
+    path('changepwd/',views.changepwd,name="chpd"),
+    path('profile/',views.pfle,name="pf"),
+    path('profileupdate/',views.pfupd,name="pfud"),
+    path('roltype/',views.rolereq,name="rlrq"),
+    path('gvper/',views.gveperm, name="gvpm"),
+    path('gvup/<int:t>/',views.gvupd,name="gvup"),
+    path('reqdel/<int:t>',views.reqdel,name="rd"),
+    path('addroom/',views.addroom,name="ar"),
+    path('updtroom/<int:m>',views.updtroom,name="ur"),
+    path('delroom/<int:m>/',views.delroom,name="dr"),
+    path('viewroom/<int:m>',views.viewroom,name="vr"),
+    path('availrooms/',views.availrooms,name="avr"),
+    path('bookings/<int:m>',views.booking,name="book"),
+    path('history/<int:m>/',views.history,name="hist"),
+    path('cancelbook/<int:m>/',views.cancelbook,name="canbook"),
+    path('history_man/',views.history_man,name="hist_man"),
+    path('check_in/<int:m>/',views.checkin,name="ci"),
+    path('check_out/<int:m>/',views.checkout,name="co"),
+    path('contactus/',views.contact,name="ct"),
+    path('aboutus/',views.about,name="ab"),
+    path('bill/<int:m>/',views.bill,name="bill"),
+]

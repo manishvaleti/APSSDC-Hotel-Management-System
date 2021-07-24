@@ -1,0 +1,25 @@
+{% extends 'app/base.html' %}
+{% block title %}Request Deletion{% endblock %}
+{% block content %}
+<div class="container" style="margin-top: 100px;">
+    <div class="card col-md-6 " style="background: linear-gradient(90deg, rgba(236,207,127,1) 35%, rgba(236,237,5,1) 100%);">
+        <div class="card-body">
+            <div class="card-title">
+                <h3>Request Delete</h3>
+            </div>
+            <form method="POST">
+                {% csrf_token %}
+                <h5>ARE U SURE U WANT TO DELETE THIS REQUEST FROM {{a.username}}</h5>
+                <div class="row">
+                    <div class="col">
+                        <a href="{% url 'gvpm' %}" class="btn btn-outline-primary form-control my-2">CANCEL</a>
+                    </div>
+                    <div class="col">
+                        <input type="submit" class="btn btn-outline-success form-control my-2" value="DELETE">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

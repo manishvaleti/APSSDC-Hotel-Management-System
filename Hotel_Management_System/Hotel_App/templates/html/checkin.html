@@ -1,0 +1,21 @@
+{% extends 'html/base.html' %}
+{% load static %}
+{% block title %}Check-In{% endblock %}
+{% block content %}
+
+    <div class="container" style="margin-top: 100px;">
+        <div style="background: linear-gradient(90deg, rgba(236,207,127,1) 35%, rgba(236,237,5,1) 100%);" class="card col-md-5 mx-auto shadow-lg">
+            <div class="card-body">
+                <h3 style="color: aliceblue;">Check-In</h3>
+                <p style="color: rgb(152, 194, 231);">Check-In into Room No : {{t.rno}}</p>
+                <form method="POST">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-outline-success " value="Check-In"></input>
+                </form>
+                
+    
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

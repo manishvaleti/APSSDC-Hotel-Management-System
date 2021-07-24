@@ -1,0 +1,80 @@
+{% extends 'html/base.html' %}
+{% load static %}
+{% block title %}Home{% endblock %}
+{% block content %}
+
+<div class="container-fluid" style="margin-top: 75px;">
+  {% if messages %}
+  {% for m in messages %}
+  <div class="alert alert-{{m.tags}} alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      {{m}}
+  </div>
+  {% endfor %}
+  {% endif %}
+    <div class="row">
+        <div id="demo" class="carousel slide" data-ride="carousel">
+
+            <!-- Indicators -->
+            <ul class="carousel-indicators">
+              <li data-target="#demo" data-slide-to="0" class="active"></li>
+              <li data-target="#demo" data-slide-to="1"></li>
+              <li data-target="#demo" data-slide-to="2"></li>
+            </ul>
+          
+            <!-- The slideshow -->
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="{% static 'img/Images/pic3.jpg' %}" alt="Los Angeles" height="650px" width="1550px">
+              </div>
+              <div class="carousel-item">
+                <img src="{% static 'img/Images/pic2.jpg' %}" alt="Chicago" height="650px" width="1550px">
+              </div>
+              <div class="carousel-item">
+                <img src="{% static 'img/Images/pic1.jpg' %}" alt="New York" height="650px" width="1550px">
+              </div>
+            </div>
+          
+            <!-- Left and right controls -->
+            <a class="carousel-control-prev" href="#demo" data-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#demo" data-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </a>
+          
+          </div>
+        
+    </div>
+    <div class="row mt-5" style="margin-left: 100px; margin-right: 100px; display: flex; align-items: center; justify-content: center;">
+        <h2 class="text-primary" >GET AWAY AT THE BEST PRICE</h2>
+    </div>
+    <div class="row my-5" style="margin-left: 100px; margin-right: 100px;">
+        <div class="col col-md-4">
+            <div class="card shawdow-lg my-2">
+                <img src="{% static 'img/Images/pic6.jpg' %}" alt="name" class="card-img-top" height="300">
+                <div class="card-body">
+                    <h6 class="text-primary text-center">Enjoy Upto 20% Off</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col col-md-4">
+            <div class="card shawdow-lg my-2">
+                <img src="{% static 'img/Images/pic5.jpg' %}" alt="name" class="card-img-top" height="300">
+                <div class="card-body">
+                    <h6 class="text-primary text-center">The earlier you book, the more you save</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col col-md-4">
+            <div class="card shawdow-lg my-2">
+                <img src="{% static 'img/Images/pic4.jpg' %}" alt="name" class="card-img-top" height="300">
+                <div class="card-body">
+                    <h6 class="text-primary text-center">Become a member today</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% include 'html/footer.html' %}
+{% endblock %}
